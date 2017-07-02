@@ -1,4 +1,25 @@
 function validateForm(){
+	$(document).ready(function(){
+		$('#input-password').focusin(function(){ // evento focusin
+			$('this').addClass('miClase'); // añadimos una clase
+		});
+
+		$('#input-password').focusout(function(){
+			if($('this').val().length > 0 && $(this).val().length <= 5){ // estamos diciendoq ue si el valor ingresado por el usuario es menor o igual a 5.
+				$('#mensajeError4').html('<span class="errores" style = "color: #BF9AE1;">Escribe tu contraseña. Debe ser al menos de 6 carácteres y distinto a 123456 o 098765</span>');
+			}else if($('this').val().length > 5){
+				$('#mensajeError4').html('<span class="errores" style="color: #BF9AE1;">Contraseña valida</span>');
+			}else{
+				$('mensajeError4').html("");
+			}
+		});
+	});
+}
+
+/*
+// NO FUNCIONA T.T
+
+function validateForm(){
 	var expre = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 	var expreNom = /[a-z]/;
 
@@ -8,7 +29,7 @@ function validateForm(){
 			var apellido = $('#lastname').val();
 			var correo = $('#input-email').val();
 			var clave = $('#input-password').val();
-			/* Ahora Validaremos */
+			// Ahora Validaremos
 
 			// Nombre
 			if($('#name').val() == "" || $('#name').val() != expreNom.test($('#name').val())){
@@ -46,4 +67,4 @@ function validateForm(){
 }
 
 
-// NO FUNCIONA T.T
+*/
